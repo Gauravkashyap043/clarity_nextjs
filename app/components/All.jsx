@@ -43,7 +43,7 @@ const All = () => {
             <button className="text-green-600 border border-green-500 ring-1 ring-gray-500 px-3 p-1 rounded">Talk Now</button>
         </div>
       </div>
-      <div className=" h-[186px] rounded-lg mt-2 p-2 bg-zinc-900 ">
+      {/* <div className=" h-[186px] rounded-lg mt-2 p-2 bg-zinc-900 ">
         <div className="flex justify-between">
             <div className="flex gap-3">
                 <div className="w-[65px] h-[65px] rounded-full border border-green-500"></div>
@@ -62,7 +62,7 @@ const All = () => {
             <span className="my-3 text-sm text-gray-400">Exp: 666 hrs</span>
             <button className="text-green-600 border border-green-500 ring-1 ring-gray-500 px-3 p-1 rounded">Talk Now</button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

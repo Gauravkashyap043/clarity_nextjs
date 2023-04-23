@@ -23,11 +23,15 @@ const verifyMobile = () => {
   const router = useRouter();
   const [mobileNumber, setMobileNumber] = useState("");
   const [otp,setOtp] = useState("");
+  const [mobileNumberError,setMobileNumberError] = useState("");
+  const [otpError,setOtpError] = useState(false);
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     if(mobileNumber.length >= 10) {
       localStorage.setItem("number",mobileNumber)
       setOpen(true)
+    } else {
+      setMobileNumberError("Enter minimun 10 digit")
     }
     // setOpen(true);
   };
@@ -36,6 +40,8 @@ const verifyMobile = () => {
   const handleOtp = () => {
     if(otp === "0000") {
       router.push("/home")
+    } else {
+      setOtpError(true)
     }
   }
 
@@ -54,12 +60,13 @@ const verifyMobile = () => {
         />
         <input
           type="number"
-          className="border border-sky-500 bg-transparent p-3 rounded ml-8"
+          className={`border ${mobileNumberError ? "border-red-500" : "border-sky-500"}  bg-transparent p-3 rounded ml-8`}
           placeholder="Mobile Number"
           onChange={(e) => {
-            setMobileNumber(e.target.value);
+            setMobileNumber(e.target.value) || setMobileNumberError();
           }}
         />
+        {mobileNumberError && <p className="text-red-500 text-sm ml-28 mt-2">{mobileNumberError}</p>}
       </div>
       <div className="mt-[40%] text-center">
         <button
@@ -86,10 +93,11 @@ const verifyMobile = () => {
           <div className="mt-8">
             <input
               type="number"
-              className="border border-sky-500 bg-transparent p-3 rounded w-full"
+              className={`${otpError ? "border border-red-500" : "border border-sky-500"} bg-transparent p-3 rounded w-full`}
               placeholder="Enter OTP"
-              onChange={(e) => {setOtp(e.target.value)}}
+              onChange={(e) => {setOtp(e.target.value) || setOtpError()}}
             />
+            {otpError && <p className="text-red-600">Enter OTP '0000'</p>}
           </div>
           <div className="flex items-center mt-4 ">
             <p>Did not receive code?</p>
